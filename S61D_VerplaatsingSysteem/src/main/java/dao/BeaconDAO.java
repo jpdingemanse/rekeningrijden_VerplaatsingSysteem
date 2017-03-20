@@ -25,6 +25,9 @@ public class BeaconDAO {
     }
     public Beacon findBeacon(Beacon beacon){
         List<Beacon> result = em.createQuery("Select b from Beacon b where b.iCan = :ican").setParameter("ican", beacon.getiCan()).getResultList();
+        if(result.isEmpty()){
+        return null;
+        }
         Beacon beaconResult = result.get(result.size() - 1);
         if(beaconResult.getLatitude() == beacon.getLatitude() && beaconResult.getLongitude() == beacon.getLongitude()){
             return beaconResult;

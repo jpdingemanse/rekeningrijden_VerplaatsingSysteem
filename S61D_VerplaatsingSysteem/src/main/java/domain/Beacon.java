@@ -6,6 +6,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.security.Timestamp;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +29,7 @@ public class Beacon implements Serializable {
     private String iCan;
     private double latitude;
     private double longitude;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateTime;
+    private long beaconTime;
     private String  signature; 
     @ManyToOne
     private Movement movement;
@@ -38,11 +38,11 @@ public class Beacon implements Serializable {
     }
    
 
-    public Beacon(String iCan, double latitude, double longitude, Date dateTime) {
+    public Beacon(String iCan, double latitude, double longitude, long beaconTime) {
         this.iCan = iCan;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.dateTime = dateTime;
+        this.beaconTime = beaconTime;
         
     }
 
@@ -77,13 +77,14 @@ public class Beacon implements Serializable {
         this.longitude = longitude;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public long getBeaconTime() {
+        return beaconTime;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setBeaconTime(long beaconTime) {
+        this.beaconTime = beaconTime;
     }
+
     public String getSignature() {
         return signature;
     }
