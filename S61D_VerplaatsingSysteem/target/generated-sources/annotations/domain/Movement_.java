@@ -6,7 +6,11 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-03-20T19:57:24")
+<<<<<<< Updated upstream
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-03-20T17:48:16")
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-03-20T19:01:40")
+>>>>>>> Stashed changes
 @StaticMetamodel(Movement.class)
 public class Movement_ { 
 
