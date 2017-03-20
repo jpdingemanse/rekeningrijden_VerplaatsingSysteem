@@ -6,10 +6,13 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -22,25 +25,30 @@ public class Movement implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne
-    private Beacon startPoint;
-    @OneToOne
-    private Beacon endPoint;
+    @OneToMany(mappedBy = "movement")
+    private List<Beacon> ride;
     private String licensePlate;
 
     public Movement() {
     }
 
-    public Movement(Beacon startPoint, Beacon endPoint, String licensePlate) {
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
+    public Movement(String licensePlate) {
         this.licensePlate = licensePlate;
+        this.ride = new ArrayList<>();
     }
 
     public String getLicensePlate() {
         return licensePlate;
     }
 
+    public List<Beacon> getRide() {
+        return ride;
+    }
+
+    public void setRide(List<Beacon> ride) {
+        this.ride = ride;
+    }
+    
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
     }
@@ -52,22 +60,12 @@ public class Movement implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-
-    public Beacon getStartPoint() {
-        return startPoint;
+    
+    public void addBeacon(Beacon beacon){
+        this.ride.add(beacon);
     }
 
-    public void setStartPoint(Beacon startPoint) {
-        this.startPoint = startPoint;
-    }
-
-    public Beacon getEndPoint() {
-        return endPoint;
-    }
-
-    public void setEndPoint(Beacon endPoint) {
-        this.endPoint = endPoint;
-    }
+   
     
     
 }

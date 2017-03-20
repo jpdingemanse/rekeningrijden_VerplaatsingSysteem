@@ -20,6 +20,8 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 public class BeaconService {
     @Inject
     BeaconDAO beaconDAO;
+    @Inject
+    MovementService movementService;
     
     public boolean createNewBeacon(Beacon beacon){
         return beaconDAO.createNewBeacon(beacon);

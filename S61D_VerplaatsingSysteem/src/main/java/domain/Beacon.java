@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
@@ -27,10 +28,8 @@ public class Beacon implements Serializable {
     private double longitude;
     private DateTime timeStamp;
     private String  signature; 
-    @OneToOne(mappedBy = "startPoint")
-    private Movement startMovement;
-    @OneToOne(mappedBy = "endPoint")
-    private Movement endMovement;
+    @ManyToOne
+    private Movement movement;
 
     public Beacon() {
     }
@@ -41,8 +40,16 @@ public class Beacon implements Serializable {
         this.latitude = latitude;
         this.longitude = longitude;
         this.timeStamp = timeStamp;
+        
     }
 
+    public Movement getMovement() {
+        return movement;
+    }
+
+    public void setMovement(Movement movement) {
+        this.movement = movement;
+    }
     public String getiCan() {
         return iCan;
     }
@@ -91,21 +98,7 @@ public class Beacon implements Serializable {
         this.id = id;
     }
 
-    public Movement getStartMovement() {
-        return startMovement;
-    }
-
-    public void setStartMovement(Movement startMovement) {
-        this.startMovement = startMovement;
-    }
-
-    public Movement getEndMovement() {
-        return endMovement;
-    }
-
-    public void setEndMovement(Movement endMovement) {
-        this.endMovement = endMovement;
-    }
+  
     
     
 }

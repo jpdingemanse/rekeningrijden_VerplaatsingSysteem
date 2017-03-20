@@ -5,10 +5,41 @@
  */
 package dao;
 
+import domain.Beacon;
+import domain.Movement;
+import java.io.Serializable;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 /**
  *
  * @author lino_
  */
-public class MovementDAO {
+@Stateless
+public class MovementDAO implements Serializable {
+    @PersistenceContext
+    EntityManager em;
+
+    public MovementDAO() {
+    }
+    
+    public Movement createNewMovement(Movement movement){
+        em.persist(movement);
+        Movement result = em.find(Movement.class, movement.getId());
+        return result;
+    }
+    
+    public boolean addMovementToList(Movement movement, Beacon beacon){
+        try{
+            Movement result = em.find(Movement.class, movement.getId());
+            result.addBeacon(beacon);
+            em.merge(result);
+            return true;
+        }catch (Exception ex){
+            return false;
+        }
+        
+    }
     
 }

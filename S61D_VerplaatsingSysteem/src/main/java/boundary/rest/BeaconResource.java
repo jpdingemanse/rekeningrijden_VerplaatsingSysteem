@@ -29,4 +29,6 @@ public class BeaconResource {
     public boolean createBeacon(Beacon beacon){
         return beaconService.createNewBeacon(beacon);
     }
+    
+    
 }

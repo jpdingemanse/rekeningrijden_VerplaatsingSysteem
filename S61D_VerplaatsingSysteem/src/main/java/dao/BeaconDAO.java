@@ -23,11 +23,23 @@ public class BeaconDAO {
 
     public BeaconDAO() {
     }
-    
+    public Beacon findBeacon(Beacon beacon){
+        List<Beacon> result = em.createQuery("Select b from Beacon b where b.iCan = :ican").setParameter("ican", beacon.getiCan()).getResultList();
+        Beacon beaconResult = result.get(result.size() - 1);
+        if(beaconResult.getLatitude() == beacon.getLatitude() && beaconResult.getLongitude() == beacon.getLongitude()){
+            return beaconResult;
+        }
+        return null;
+    }
     public boolean createNewBeacon(Beacon beacon){
         try{
-            em.persist(beacon);
-            return true;
+            if(findBeacon(beacon) != null){
+                return false;
+            }else{
+                em.persist(beacon);
+                return true;
+            }
+            
         }catch (Exception ex){
             return false;
         }
