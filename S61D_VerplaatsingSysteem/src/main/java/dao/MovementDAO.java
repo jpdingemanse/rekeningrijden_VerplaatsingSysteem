@@ -8,6 +8,7 @@ package dao;
 import domain.Beacon;
 import domain.Movement;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -39,7 +40,5 @@ public class MovementDAO implements Serializable {
         }catch (Exception ex){
             return false;
         }
-        
-    }
-    
+    }   
 }

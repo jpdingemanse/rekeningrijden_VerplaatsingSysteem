@@ -6,11 +6,14 @@
 package boundary.rest;
 
 import domain.Beacon;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import service.BeaconService;
 
 /**
@@ -30,5 +33,10 @@ public class BeaconResource {
         return beaconService.createNewBeacon(beacon);
     }
     
+    @GET
+    @Path("getBeaconsById/{id}")
+    public List<Beacon> getBeaconsById(@PathParam("id")int id){
+        return beaconService.getBeaconsById(id);
+    }
     
 }

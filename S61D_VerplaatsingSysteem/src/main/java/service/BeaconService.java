@@ -30,4 +30,8 @@ public class BeaconService {
     public List<Beacon> getBeaconWithIcanIdAndTime(int ican, DateTime dateTime){
         return beaconDAO.getBeaconWithIcanIdAndTime(ican, dateTime);
     }
+        
+    public List<Beacon> getBeaconsById(int id){
+        return beaconDAO.getBeaconsById(id);
+    }
 }

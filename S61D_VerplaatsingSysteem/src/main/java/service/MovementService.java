@@ -8,6 +8,7 @@ package service;
 import dao.MovementDAO;
 import domain.Beacon;
 import domain.Movement;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
