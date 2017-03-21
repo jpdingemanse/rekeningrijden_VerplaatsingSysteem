@@ -23,8 +23,9 @@ public class BeaconDAO {
 
     public BeaconDAO() {
     }
+    
     public Beacon findBeacon(Beacon beacon){
-        List<Beacon> result = em.createQuery("Select b from Beacon b where b.iCan = :ican").setParameter("ican", beacon.getiCan()).getResultList();
+        List<Beacon> result = em.createNamedQuery("Beacon.getByIcan").setParameter("ican", beacon.getiCan()).getResultList();
         if(result.isEmpty()){
             return null;
         }
@@ -48,9 +49,13 @@ public class BeaconDAO {
         }
     }
     
-    public List<Beacon> getBeaconWithIcanIdAndTime(int ican, DateTime date){
-        List<Beacon> result = em.createQuery("Select b From Beacon b where b.iCan = :ican").setParameter("ican", ican).getResultList();
-        return result;
+    public List<Beacon> getAllBeaconByIcan(String iCan){
+        try{
+            List<Beacon> result = em.createNamedQuery("Beacon.getByIcan").setParameter("ican", iCan).getResultList();
+            return result;
+        }catch (Exception ex){
+            return null;
+        }
     }
 
 }

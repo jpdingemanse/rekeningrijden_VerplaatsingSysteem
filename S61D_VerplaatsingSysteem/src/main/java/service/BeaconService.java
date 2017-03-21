@@ -7,10 +7,12 @@ package service;
 
 import dao.BeaconDAO;
 import domain.Beacon;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -20,14 +22,37 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 public class BeaconService {
     @Inject
     BeaconDAO beaconDAO;
-    @Inject
-    MovementService movementService;
     
     public boolean createNewBeacon(Beacon beacon){
         return beaconDAO.createNewBeacon(beacon);
     }
     
-    public List<Beacon> getBeaconWithIcanIdAndTime(int ican, DateTime dateTime){
-        return beaconDAO.getBeaconWithIcanIdAndTime(ican, dateTime);
+    public List<List<Beacon>> getAllRideByIcan(String iCan){
+        List<List<Beacon>> result = new ArrayList<>();
+        List<Beacon> tempResult = beaconDAO.getAllBeaconByIcan(iCan);
+        Long timeStamp = 0L;
+        List<Beacon> resultList = new ArrayList<>();
+        for(Beacon b : tempResult){
+            if(timeStamp == 0){
+                timeStamp = b.getDateTime();
+                resultList.add(b);
+            }else{
+                if((b.getDateTime() - timeStamp.longValue()) <= 900){
+                    timeStamp = b.getDateTime();
+                    resultList.add(b);
+                }else{
+                    result.add(resultList);
+                    timeStamp = b.getDateTime();
+                    Beacon lastBeacon = resultList.get(resultList.size() - 1);
+                    resultList = new ArrayList<>();
+                    resultList.add(lastBeacon);
+                    resultList.add(b);
+                }
+            }
+        }
+        result.add(resultList);
+//        List<Map<String, List<Beacon>>> output = new ArrayList<Map<String, List<Beacon>>>();
+//        output.add(result);
+        return result;
     }
 }

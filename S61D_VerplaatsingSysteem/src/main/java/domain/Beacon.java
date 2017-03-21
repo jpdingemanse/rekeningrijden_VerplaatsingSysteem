@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
@@ -21,6 +23,9 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  * @author lino_
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name="Beacon.getByIcan", query="Select b from Beacon b where b.iCan = :ican"),
+})
 public class Beacon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,30 +33,19 @@ public class Beacon implements Serializable {
     private String iCan;
     private double latitude;
     private double longitude;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateTime;
+    private Long dateTime;
     private String  signature; 
-    @ManyToOne
-    private Movement movement;
 
     public Beacon() {
     }
    
 
-    public Beacon(String iCan, double latitude, double longitude, Date dateTime) {
+    public Beacon(String iCan, double latitude, double longitude, Long dateTime) {
         this.iCan = iCan;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
         
-    }
-
-    public Movement getMovement() {
-        return movement;
-    }
-
-    public void setMovement(Movement movement) {
-        this.movement = movement;
     }
     public String getiCan() {
         return iCan;
@@ -77,13 +71,15 @@ public class Beacon implements Serializable {
         this.longitude = longitude;
     }
 
-    public Date getDateTime() {
+    public Long getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(Long dateTime) {
         this.dateTime = dateTime;
     }
+
+    
     public String getSignature() {
         return signature;
     }
