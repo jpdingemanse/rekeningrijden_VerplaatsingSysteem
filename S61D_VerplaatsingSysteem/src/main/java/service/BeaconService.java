@@ -55,4 +55,8 @@ public class BeaconService {
 //        output.add(result);
         return result;
     }
+        
+    public List<Beacon> getBeaconsById(int id){
+        return beaconDAO.getBeaconsById(id);
+    }
 }

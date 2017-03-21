@@ -48,6 +48,11 @@ public class BeaconDAO {
             return false;
         }
     }
+        
+    public List<Beacon> getBeaconsById(int id){
+        List<Beacon> result = em.createQuery("Select b From Beacon b where b.movement.id = :id").setParameter(":id", id).getResultList();
+        return result;
+    }
     
     public List<Beacon> getAllBeaconByIcan(String iCan){
         try{
