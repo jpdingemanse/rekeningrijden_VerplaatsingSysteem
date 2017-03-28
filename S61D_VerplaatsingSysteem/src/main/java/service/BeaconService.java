@@ -27,11 +27,13 @@ public class BeaconService {
         return beaconDAO.createNewBeacon(beacon);
     }
     
-    public List<List<Beacon>> getAllRideByIcan(String iCan){
-        List<List<Beacon>> result = new ArrayList<>();
+    public Map<String, List<Beacon>> getAllRideByIcan(String iCan){
+        Map<String, List<Beacon>> result = new HashMap<>();
         List<Beacon> tempResult = beaconDAO.getAllBeaconByIcan(iCan);
         Long timeStamp = 0L;
         List<Beacon> resultList = new ArrayList<>();
+        int counter = 1;
+        String counterText = "";
         for(Beacon b : tempResult){
             if(timeStamp == 0){
                 timeStamp = b.getDateTime();
@@ -41,7 +43,9 @@ public class BeaconService {
                     timeStamp = b.getDateTime();
                     resultList.add(b);
                 }else{
-                    result.add(resultList);
+                    counterText = counter + "";
+                    result.put(counterText, resultList);
+                    counter++;
                     timeStamp = b.getDateTime();
                     Beacon lastBeacon = resultList.get(resultList.size() - 1);
                     resultList = new ArrayList<>();
@@ -50,7 +54,8 @@ public class BeaconService {
                 }
             }
         }
-        result.add(resultList);
+        counterText = counter + "";
+        result.put(counterText, resultList);
 //        List<Map<String, List<Beacon>>> output = new ArrayList<Map<String, List<Beacon>>>();
 //        output.add(result);
         return result;
