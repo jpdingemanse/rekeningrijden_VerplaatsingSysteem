@@ -2,6 +2,7 @@ domain\Movement.class
 boundary\rest\BeaconResource.class
 dao\MovementDAO.class
 service\BeaconService.class
+service\MovementService.class
 boundary\rest\JARSconfig.class
 domain\Beacon.class
 domain\Movement_.class

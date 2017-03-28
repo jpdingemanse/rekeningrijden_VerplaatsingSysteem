@@ -1,7 +1,8 @@
-C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden\S61D_VerplaatsingSysteem\src\main\java\dao\MovementDAO.java
-C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden\S61D_VerplaatsingSysteem\src\main\java\domain\Movement.java
-C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden\S61D_VerplaatsingSysteem\src\main\java\service\BeaconService.java
-C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden\S61D_VerplaatsingSysteem\src\main\java\boundary\rest\BeaconResource.java
-C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden\S61D_VerplaatsingSysteem\src\main\java\boundary\rest\JARSconfig.java
-C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden\S61D_VerplaatsingSysteem\src\main\java\dao\BeaconDAO.java
-C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden\S61D_VerplaatsingSysteem\src\main\java\domain\Beacon.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\dao\BeaconDAO.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\domain\Beacon.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\dao\MovementDAO.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\service\BeaconService.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\service\MovementService.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\boundary\rest\BeaconResource.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\domain\Movement.java
+C:\Users\lino_\Desktop\S6\ESD6\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\boundary\rest\JARSconfig.java

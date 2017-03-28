@@ -25,7 +25,7 @@ public class Beacon implements Serializable {
     private String iCan;
     private double latitude;
     private double longitude;
-    private DateTime timeStamp;
+    private Long dateTime;
     private String  signature; 
     @OneToOne(mappedBy = "startPoint")
     private Movement startMovement;
@@ -36,11 +36,11 @@ public class Beacon implements Serializable {
     }
    
 
-    public Beacon(String iCan, double latitude, double longitude, DateTime timeStamp) {
+    public Beacon(String iCan, double latitude, double longitude, Long dateTime) {
         this.iCan = iCan;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.timeStamp = timeStamp;
+        this.dateTime = dateTime;
     }
 
     public String getiCan() {
@@ -67,14 +67,13 @@ public class Beacon implements Serializable {
         this.longitude = longitude;
     }
 
-    public DateTime getTimeStamp() {
-        return timeStamp;
+    public Long getDateTime() {
+        return dateTime;
     }
 
-    public void setTimeStamp(DateTime timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setDateTime(Long dateTime) {
+        this.dateTime = dateTime;
     }
-
     public String getSignature() {
         return signature;
     }
