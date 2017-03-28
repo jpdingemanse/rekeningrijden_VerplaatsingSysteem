@@ -24,18 +24,43 @@ public class BeaconDAO {
     public BeaconDAO() {
     }
     
+    public Beacon findBeacon(Beacon beacon){
+        List<Beacon> result = em.createNamedQuery("Beacon.getByIcan").setParameter("ican", beacon.getiCan()).getResultList();
+        if(result.isEmpty()){
+            return null;
+        }
+        Beacon beaconResult = result.get(result.size() - 1);
+        if(beaconResult.getLatitude() == beacon.getLatitude() && beaconResult.getLongitude() == beacon.getLongitude()){
+            return beaconResult;
+        }
+        return null;
+    }
     public boolean createNewBeacon(Beacon beacon){
         try{
-            em.persist(beacon);
-            return true;
+            if(findBeacon(beacon) != null){
+                return false;
+            }else{
+                em.persist(beacon);
+                return true;
+            }
+            
         }catch (Exception ex){
             return false;
         }
     }
-    
-    public List<Beacon> getBeaconWithIcanIdAndTime(int ican, DateTime date){
-        List<Beacon> result = em.createQuery("Select b From Beacon b where b.iCan = :ican").setParameter("ican", ican).getResultList();
+        
+    public List<Beacon> getBeaconsById(int id){
+        List<Beacon> result = em.createQuery("Select b From Beacon b where b.movement.id = :id").setParameter(":id", id).getResultList();
         return result;
+    }
+    
+    public List<Beacon> getAllBeaconByIcan(String iCan){
+        try{
+            List<Beacon> result = em.createNamedQuery("Beacon.getByIcan").setParameter("ican", iCan).getResultList();
+            return result;
+        }catch (Exception ex){
+            return null;
+        }
     }
 
 }

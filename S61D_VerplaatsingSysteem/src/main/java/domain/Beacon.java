@@ -6,11 +6,16 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
@@ -18,6 +23,9 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  * @author lino_
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name="Beacon.getByIcan", query="Select b from Beacon b where b.iCan = :ican"),
+})
 public class Beacon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +35,6 @@ public class Beacon implements Serializable {
     private double longitude;
     private Long dateTime;
     private String  signature; 
-    @OneToOne(mappedBy = "startPoint")
-    private Movement startMovement;
-    @OneToOne(mappedBy = "endPoint")
-    private Movement endMovement;
 
     public Beacon() {
     }
@@ -42,7 +46,6 @@ public class Beacon implements Serializable {
         this.longitude = longitude;
         this.dateTime = dateTime;
     }
-
     public String getiCan() {
         return iCan;
     }
@@ -82,29 +85,9 @@ public class Beacon implements Serializable {
         this.signature = signature;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public Movement getStartMovement() {
-        return startMovement;
-    }
-
-    public void setStartMovement(Movement startMovement) {
-        this.startMovement = startMovement;
-    }
-
-    public Movement getEndMovement() {
-        return endMovement;
-    }
-
-    public void setEndMovement(Movement endMovement) {
-        this.endMovement = endMovement;
-    }
+  
     
     
 }
