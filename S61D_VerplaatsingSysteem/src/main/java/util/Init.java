@@ -24,13 +24,13 @@ public class Init {
     
     @PostConstruct
     public void Init(){
-        beaconDAO.createNewBeacon(new Beacon("Test1", 2.1, 1.1, new Long(100)));
-        beaconDAO.createNewBeacon(new Beacon("Test1", 2.2, 1.1, new Long(101)));
-        beaconDAO.createNewBeacon(new Beacon("Test1", 2.3, 1.1, new Long(102)));
-        beaconDAO.createNewBeacon(new Beacon("Test1", 2.4, 1.1, new Long(103)));
+        beaconDAO.createNewBeacon(new Beacon("NL12345", 2.1, 1.1, new Long(100)));
+        beaconDAO.createNewBeacon(new Beacon("NL12345", 2.2, 1.1, new Long(101)));
+        beaconDAO.createNewBeacon(new Beacon("NL12345", 2.3, 1.1, new Long(102)));
+        beaconDAO.createNewBeacon(new Beacon("NL12345", 2.4, 1.1, new Long(103)));
         
-        beaconDAO.createNewBeacon(new Beacon("Test1", 2.5, 1.1, new Long(1004)));
-        beaconDAO.createNewBeacon(new Beacon("Test1", 2.6, 1.1, new Long(1005)));
-        beaconDAO.createNewBeacon(new Beacon("Test1", 2.7, 1.1, new Long(1006)));
+        beaconDAO.createNewBeacon(new Beacon("NL12345", 2.5, 1.1, new Long(1004)));
+        beaconDAO.createNewBeacon(new Beacon("NL12345", 2.6, 1.1, new Long(1005)));
+        beaconDAO.createNewBeacon(new Beacon("NL12345", 2.7, 1.1, new Long(1006)));
     }
 }
