@@ -24,13 +24,13 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="Beacon.getByIcan", query="Select b from Beacon b where b.iCan = :ican"),
+    @NamedQuery(name="Beacon.getByIcan", query="Select b from Beacon b where b.ICAN = :ican"),
 })
 public class Beacon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String iCan;
+    private String ICAN;
     private double latitude;
     private double longitude;
     private Long dateTime;
@@ -41,18 +41,20 @@ public class Beacon implements Serializable {
    
 
     public Beacon(String iCan, double latitude, double longitude, Long dateTime) {
-        this.iCan = iCan;
+        this.ICAN = iCan;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
     }
-    public String getiCan() {
-        return iCan;
+
+    public String getICAN() {
+        return ICAN;
     }
 
-    public void setiCan(String iCan) {
-        this.iCan = iCan;
+    public void setICAN(String ICAN) {
+        this.ICAN = ICAN;
     }
+    
 
     public double getLatitude() {
         return latitude;
