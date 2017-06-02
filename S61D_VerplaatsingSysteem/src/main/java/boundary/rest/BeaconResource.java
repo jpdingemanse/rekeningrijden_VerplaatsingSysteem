@@ -6,6 +6,8 @@
 package boundary.rest;
 
 import domain.Beacon;
+import factory.BeaconTransmitter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
@@ -28,27 +30,33 @@ import service.BeaconService;
 @Stateless
 @Path("Beacon")
 public class BeaconResource {
+
     @Inject
     BeaconService beaconService;
-    
+
     @POST
     @Path("CreateBeacon")
     @Consumes("application/json")
-    public boolean createBeacon(Beacon beacon){
+    public boolean createBeacon(Beacon beacon) {
         return beaconService.createNewBeacon(beacon);
     }
-    
+
     @GET
     @Path("GetMovementPerIcan/{iCan}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Beacon> getMovementPerIcan(@PathParam("iCan")String iCan){
+    public List<Beacon> getMovementPerIcan(@PathParam("iCan") String iCan) {
         try {
             Map<String, List<Beacon>> result = beaconService.getAllRideByIcan(iCan);
             return result.get("1");
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return null;
         }
-        
     }
-    
+
+    @GET
+    @Path("GetCarMovementsADay/{iCan}")
+    public List<Beacon> getCarMovementsADay(@PathParam("iCan") String iCan) {
+        return beaconService.getBeaconsByDate(iCan);
+    }
+
 }

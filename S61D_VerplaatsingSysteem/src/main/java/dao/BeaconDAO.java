@@ -6,6 +6,7 @@
 package dao;
 
 import domain.Beacon;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -62,5 +63,12 @@ public class BeaconDAO {
             return null;
         }
     }
-
+    public List<Beacon> getBeaconsByDay(Timestamp begin, Timestamp end, String iCan){
+        try{
+            List<Beacon> result = em.createNamedQuery("Beacon.getBeaconsPerDay").setParameter("begin", begin).setParameter("end", end).setParameter("iCan", iCan).getResultList();
+            return result;
+        }catch (Exception ex){
+            return null;
+        }
+    }
 }

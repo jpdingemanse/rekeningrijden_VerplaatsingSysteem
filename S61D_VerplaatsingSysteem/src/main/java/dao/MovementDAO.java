@@ -5,10 +5,23 @@
  */
 package dao;
 
+import domain.Beacon;
+import domain.Movement;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 /**
  *
  * @author lino_
  */
+@Stateless
 public class MovementDAO {
-    
+
+    @PersistenceContext
+    EntityManager em;
+
+    public void createNewMovement(Movement movement) {
+        em.persist(movement);
+    }
 }

@@ -25,6 +25,7 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 @Entity
 @NamedQueries({
     @NamedQuery(name="Beacon.getByIcan", query="Select b from Beacon b where b.iCan = :ican"),
+    @NamedQuery(name = "Beacon.getBeaconsPerDay", query="Select b from Beacon b where b.iCan = :iCan b.dateTime BETWEEN :start and end")
 })
 public class Beacon implements Serializable {
     @Id
