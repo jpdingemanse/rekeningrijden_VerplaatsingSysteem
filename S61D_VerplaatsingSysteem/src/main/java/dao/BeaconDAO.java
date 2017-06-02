@@ -26,7 +26,7 @@ public class BeaconDAO {
     }
     
     public Beacon findBeacon(Beacon beacon){
-        List<Beacon> result = em.createNamedQuery("Beacon.getByIcan").setParameter("ican", beacon.getiCan()).getResultList();
+        List<Beacon> result = em.createNamedQuery("Beacon.getByIcan").setParameter("ican", beacon.getICAN()).getResultList();
         if(result.isEmpty()){
             return null;
         }

@@ -29,12 +29,20 @@ public class BeaconService {
 
     @Inject
     BeaconDAO beaconDAO;
-
     @Inject
     BeaconTransmitter beaconTransmitter;
 
-    public boolean createNewBeacon(Beacon beacon) {
-        return beaconDAO.createNewBeacon(beacon);
+    
+    public boolean createNewBeacon(List<Beacon> beacon){
+        try{
+            for(Beacon b : beacon){
+                beaconDAO.createNewBeacon(b);
+            }
+            return true;
+        }
+        catch(Exception ex){
+            return false;
+        }
     }
 
     public Map<String, List<Beacon>> getAllRideByIcan(String iCan) {

@@ -37,8 +37,11 @@ public class BeaconResource {
     @POST
     @Path("CreateBeacon")
     @Consumes("application/json")
-    public boolean createBeacon(Beacon beacon) {
-        return beaconService.createNewBeacon(beacon);
+    public boolean createBeacon(List<Beacon> beacon){
+        if(beacon.size() != 0){
+            return beaconService.createNewBeacon(beacon);
+        }
+        return false;
     }
 
     @GET
