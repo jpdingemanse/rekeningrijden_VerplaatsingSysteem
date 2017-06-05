@@ -55,6 +55,18 @@ public class BeaconResource {
             return null;
         }
     }
+     @GET
+    @Path("GetMovementPerIcanDate/{iCan}/{date}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Beacon> getMovementPerIcanDate(@PathParam("iCan") String iCan) {
+        try {
+            Map<String, List<Beacon>> result = beaconService.getAllRideByIcan(iCan);
+            
+            return result.get("1");
+        } catch (Exception ex) {
+            return null;
+        }
+    }
 
     @GET
     @Path("GetCarMovementsADay/{iCan}")

@@ -1,0 +1,4 @@
+factory\MovementTransmitter.class
+util\Init.class
+boundary\jms\JmsConnector.class
+factory\BeaconTransmitter.class
