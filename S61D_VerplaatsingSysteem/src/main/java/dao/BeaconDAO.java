@@ -80,4 +80,13 @@ public class BeaconDAO {
             return null;
         }
     }
+
+    public List<Beacon> getBeaconsByIcanAndDate(String iCan, String date) {
+        try{
+            List<Beacon> result = em.createNamedQuery("Beacon.getByICanAndDate").setParameter("ican", iCan).setParameter("date", date).getResultList();
+            return result;
+        }catch (Exception ex){
+            return null;
+        }
+    }
 }
