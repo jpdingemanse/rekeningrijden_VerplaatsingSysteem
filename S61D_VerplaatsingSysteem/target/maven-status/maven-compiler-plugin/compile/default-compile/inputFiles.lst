@@ -1,12 +1,12 @@
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\boundary\rest\BeaconResource.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\boundary\jms\JmsConnector.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\factory\BeaconTransmitter.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\service\MovementService.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\boundary\rest\JARSconfig.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\domain\Beacon.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\domain\Movement.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\dao\BeaconDAO.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\util\Init.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\factory\MovementTransmitter.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\service\BeaconService.java
-C:\Users\Jean Paul\Documents\NetBeansProjects\rekeningrijden_VerplaatsingSysteem\S61D_VerplaatsingSysteem\src\main\java\dao\MovementDAO.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/factory/MovementTransmitter.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/boundary/rest/BeaconResource.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/util/Init.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/service/MovementService.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/boundary/bean/JmsConnector.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/dao/MovementDAO.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/dao/BeaconDAO.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/service/BeaconService.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/boundary/rest/JARSconfig.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/domain/Beacon.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/domain/Movement.java
+/Users/ruthgervandeneikhof/Documents/School/S6/Proftaak/rekeningrijden_VerplaatsingSysteem/S61D_VerplaatsingSysteem/src/main/java/factory/BeaconTransmitter.java
