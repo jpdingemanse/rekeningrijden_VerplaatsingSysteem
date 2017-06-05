@@ -94,4 +94,38 @@ public class BeaconService {
         beaconTransmitter.SendBeaconsToAdministratie(beacons);
         return beacons;
     }
+
+    public Map<String, List<Beacon>> getBeaconsByPeriod(String iCan, String dateFrom, String dateTo) {
+        Map<String, List<Beacon>> result = new HashMap<>();
+        List<Beacon> tempResult = beaconDAO.getAllBeaconByPeriod(iCan, dateFrom, dateTo);
+        Long timeStamp = 0L;
+        List<Beacon> resultList = new ArrayList<>();
+        int counter = 1;
+        String counterText = "";
+        for (Beacon b : tempResult) {
+            if (timeStamp == 0) {
+                timeStamp = b.getDateTime();
+                resultList.add(b);
+            } else {
+                if ((b.getDateTime() - timeStamp.longValue()) <= 900) {
+                    timeStamp = b.getDateTime();
+                    resultList.add(b);
+                } else {
+                    counterText = counter + "";
+                    result.put(counterText, resultList);
+                    counter++;
+                    timeStamp = b.getDateTime();
+                    Beacon lastBeacon = resultList.get(resultList.size() - 1);
+                    resultList = new ArrayList<>();
+                    resultList.add(lastBeacon);
+                    resultList.add(b);
+                }
+            }
+        }
+        counterText = counter + "";
+        result.put(counterText, resultList);
+//        List<Map<String, List<Beacon>>> output = new ArrayList<Map<String, List<Beacon>>>();
+//        output.add(result);
+        return result;
+    }
 }

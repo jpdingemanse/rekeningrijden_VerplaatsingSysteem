@@ -56,11 +56,11 @@ public class BeaconResource {
         }
     }
      @GET
-    @Path("GetMovementPerIcanDate/{iCan}/{date}")
+    @Path("GetMovementPerIcanPeriod/{iCan}/{dateFrom}/{dateTo")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Beacon> getMovementPerIcanDate(@PathParam("iCan") String iCan) {
+    public List<Beacon> getMovementPerIcanPeriod(@PathParam("iCan") String iCan, @PathParam("dateFrom") String dateFrom, @PathParam("dateTo") String dateTo) {
         try {
-            Map<String, List<Beacon>> result = beaconService.getAllRideByIcan(iCan);
+            Map<String, List<Beacon>> result = beaconService.getBeaconsByPeriod(iCan, dateFrom, dateTo);
             
             return result.get("1");
         } catch (Exception ex) {
