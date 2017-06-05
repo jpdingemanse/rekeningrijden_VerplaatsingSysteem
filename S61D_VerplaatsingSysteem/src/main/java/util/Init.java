@@ -5,6 +5,7 @@
  */
 package util;
 
+import boundary.bean.JmsConnector;
 import dao.BeaconDAO;
 import domain.Beacon;
 import javax.annotation.PostConstruct;
@@ -32,5 +33,8 @@ public class Init {
         beaconDAO.createNewBeacon(new Beacon("NL12345", 2.5, 1.1, new Long(1004)));
         beaconDAO.createNewBeacon(new Beacon("NL12345", 2.6, 1.1, new Long(1005)));
         beaconDAO.createNewBeacon(new Beacon("NL12345", 2.7, 1.1, new Long(1006)));
+        
+        JmsConnector jms = new JmsConnector();
+        jms.jmsListener();
     }
 }
