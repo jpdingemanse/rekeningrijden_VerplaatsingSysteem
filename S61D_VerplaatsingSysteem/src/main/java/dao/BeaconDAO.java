@@ -74,7 +74,9 @@ public class BeaconDAO {
 
     public List<Beacon> getAllBeaconByPeriod(String iCan, String dateFrom, String dateTo) {
        try{
-            List<Beacon> result = em.createNamedQuery("Beacon.getByPeriod").setParameter("ican", iCan).setParameter("dateFrom", dateFrom).setParameter("dateTo", dateTo).getResultList();
+           java.sql.Timestamp timestampFrom = java.sql.Timestamp.valueOf(dateFrom + " 00:00:00.0");
+           java.sql.Timestamp timestampTo = java.sql.Timestamp.valueOf(dateTo + " 23:59:59.0");
+            List<Beacon> result = em.createNamedQuery("Beacon.getByPeriod").setParameter("ican", iCan).setParameter("dateFrom", timestampFrom).setParameter("dateTo", timestampTo).getResultList();
             return result;
         }catch (Exception ex){
             return null;
@@ -83,7 +85,8 @@ public class BeaconDAO {
 
     public List<Beacon> getBeaconsByIcanAndDate(String iCan, String date) {
         try{
-            List<Beacon> result = em.createNamedQuery("Beacon.getByICanAndDate").setParameter("ican", iCan).setParameter("date", date).getResultList();
+             java.sql.Timestamp timestampDate = java.sql.Timestamp.valueOf(date + " 00:00:00.0");
+            List<Beacon> result = em.createNamedQuery("Beacon.getByICanAndDate").setParameter("ican", iCan).setParameter("date", timestampDate).getResultList();
             return result;
         }catch (Exception ex){
             return null;
