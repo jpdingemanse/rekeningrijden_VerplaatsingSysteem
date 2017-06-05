@@ -7,6 +7,7 @@ package dao;
 
 import domain.Beacon;
 import domain.Movement;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,4 +25,6 @@ public class MovementDAO {
     public void createNewMovement(Movement movement) {
         em.persist(movement);
     }
+    
+    
 }

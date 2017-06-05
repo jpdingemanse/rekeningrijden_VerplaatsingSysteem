@@ -79,6 +79,31 @@ public class BeaconDAO {
         }
     }
 
+    public List<Beacon> getBeaconsByMonth(String iCan) {
+        try {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+            //Get first day of the month
+            Calendar c = Calendar.getInstance();   // this takes current date
+            c.set(Calendar.DAY_OF_MONTH, 1);
+            System.out.println(c.getTime());
+            Date dateFrom = df.parse(c.getTime().toString());
+
+            //Get last day of the month
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date convertedDate = dateFormat.parse(dateFrom.toString());
+            Calendar c2 = Calendar.getInstance();
+            c2.setTime(convertedDate);
+            c2.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
+            Date dateTo = c2.getTime();
+            
+            List<Beacon> result = getAllBeaconByPeriod(iCan, dateFrom.toString(), dateTo.toString());
+            return result;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
     public List<Beacon> getAllBeaconByPeriod(String iCan, String dateFrom, String dateTo) {
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -86,10 +111,9 @@ public class BeaconDAO {
             Date datumTot = dateFormat.parse(dateTo);
             long timeFrom = datumVan.getTime();
             long timeTo = datumTot.getTime();
-            
+
 //            System.out.println(timeFrom);
 //            System.out.println(timeTo);
-            
             List<Beacon> result = em.createNamedQuery("Beacon.getByPeriod").setParameter("ican", iCan).setParameter("dateFrom", timeFrom).setParameter("dateTo", timeTo).getResultList();
             return result;
         } catch (Exception ex) {
@@ -100,18 +124,17 @@ public class BeaconDAO {
 
     public List<Beacon> getBeaconsByIcanAndDate(String iCan, String date) {
         try {
-       
+
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date datumVan = dateFormat.parse(date);
-           
+
             long timeFrom = datumVan.getTime();
-            Calendar cal = Calendar.getInstance();    
-            cal.setTime( dateFormat.parse(date));    
-            cal.add( Calendar.DATE, 1 );  
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dateFormat.parse(date));
+            cal.add(Calendar.DATE, 1);
             long timeTo = cal.getTimeInMillis();
-            
-            
+
             //System.out.println(iCan + " " +timeFrom + " " +timeTo);
             List<Beacon> result = em.createNamedQuery("Beacon.getByPeriod").setParameter("ican", iCan).setParameter("dateFrom", timeFrom).setParameter("dateTo", timeTo).getResultList();
             return result;
