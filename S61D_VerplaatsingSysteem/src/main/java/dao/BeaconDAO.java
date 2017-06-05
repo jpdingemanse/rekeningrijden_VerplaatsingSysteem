@@ -100,6 +100,7 @@ public class BeaconDAO {
 
     public List<Beacon> getBeaconsByIcanAndDate(String iCan, String date) {
         try {
+       
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date datumVan = dateFormat.parse(date);
