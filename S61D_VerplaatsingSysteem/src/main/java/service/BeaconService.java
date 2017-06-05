@@ -136,6 +136,7 @@ public class BeaconService {
         List<Beacon> resultList = new ArrayList<>();
         int counter = 1;
         String counterText = "";
+        if (tempResult.size() > 0){
         for (Beacon b : tempResult) {
             if (timeStamp == 0) {
                 timeStamp = b.getDateTime();
@@ -154,6 +155,7 @@ public class BeaconService {
                     resultList.add(lastBeacon);
                     resultList.add(b);
                 }
+            }
             }
         }
         counterText = counter + "";
