@@ -51,7 +51,7 @@ public class BeaconDAO {
     }
         
     public List<Beacon> getBeaconsById(int id){
-        List<Beacon> result = em.createQuery("Select b From Beacon b where b.movement.id = :id").setParameter(":id", id).getResultList();
+        List<Beacon> result = em.createQuery("Select b From Beacon b where b.movement.id = :id").setParameter("id", id).getResultList();
         return result;
     }
     
