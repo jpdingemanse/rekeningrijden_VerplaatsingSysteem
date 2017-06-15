@@ -25,9 +25,10 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 @Entity
 @NamedQueries({
     @NamedQuery(name="Beacon.getByIcan", query="Select b from Beacon b where b.ICAN = :ican"),
-    @NamedQuery(name = "Beacon.getBeaconsPerDay", query="Select b from Beacon b where b.ICAN = :iCan and b.dateTime BETWEEN :start and :end"),
-    @NamedQuery(name="Beacon.getByPeriod", query="Select b from Beacon b where b.ICAN = :ican AND b.dateTime > :dateFrom AND b.dateTime < :dateTo"),
-    @NamedQuery(name="Beacon.getByICanAndDate", query="Select b from Beacon b where b.ICAN = :ican AND b.dateTime like :date "),
+    @NamedQuery(name = "Beacon.getBeaconsPerDay", query="Select b from Beacon b where b.ICAN = :iCan and b.timestamp BETWEEN :start and :end"),
+    @NamedQuery(name="Beacon.getByPeriod", query="Select b from Beacon b where b.ICAN = :ican AND b.timestamp > :dateFrom AND b.timestamp < :dateTo"),
+    @NamedQuery(name="Beacon.getAllBeaconByPeriod", query="Select b from Beacon b where b.fromCountry is null and b.timestamp > :dateFrom AND b.timestamp < :dateTo"),
+    @NamedQuery(name="Beacon.getByICanAndDate", query="Select b from Beacon b where b.ICAN = :ican AND b.timestamp like :date "),
    
 })
 public class Beacon implements Serializable {
@@ -37,18 +38,19 @@ public class Beacon implements Serializable {
     private String ICAN;
     private double latitude;
     private double longitude;
-    private Long dateTime;
+    private Long timestamp;
     private String  signature; 
+    private String fromCountry;
 
     public Beacon() {
     }
    
 
-    public Beacon(String iCan, double latitude, double longitude, Long dateTime) {
+    public Beacon(String iCan, double latitude, double longitude, Long timestamp) {
         this.ICAN = iCan;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.dateTime = dateTime;
+        this.timestamp = timestamp;
     }
 
     public String getICAN() {
@@ -76,13 +78,14 @@ public class Beacon implements Serializable {
         this.longitude = longitude;
     }
 
-    public Long getDateTime() {
-        return dateTime;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public void setDateTime(Long dateTime) {
-        this.dateTime = dateTime;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
+
     public String getSignature() {
         return signature;
     }
@@ -91,6 +94,15 @@ public class Beacon implements Serializable {
         this.signature = signature;
     }
 
+    public String getFromCountry() {
+        return fromCountry;
+    }
+
+    public void setFromCountry(String fromCountry) {
+        this.fromCountry = fromCountry;
+    }
+    
+    
 
 
   

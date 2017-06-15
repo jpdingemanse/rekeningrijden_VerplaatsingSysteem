@@ -6,13 +6,9 @@
 package boundary.rest;
 
 import domain.Beacon;
-import factory.BeaconTransmitter;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,7 +16,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import service.BeaconService;
 
 /**
@@ -49,8 +44,8 @@ public class BeaconResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Beacon> getMovementPerIcan(@PathParam("iCan") String iCan) {
         try {
-            Map<String, List<Beacon>> result = beaconService.getAllRideByIcan(iCan);
-            return result.get("1");
+            List<Beacon> result = beaconService.getAllRideByIcan(iCan);
+            return result;
         } catch (Exception ex) {
             return null;
         }
@@ -61,45 +56,48 @@ public class BeaconResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Beacon> getMovementPerMonth(@PathParam("iCan") String iCan) {
         try {
-            Map<String, List<Beacon>> result = beaconService.getBeaconsPerMonth(iCan);
-            return result.get("1");
+            List<Beacon> result = beaconService.getBeaconsPerMonth(iCan);
+            return result;
         } catch (Exception ex) {
             return null;
         }
     }
-    
-    
-    
     
     @GET
     @Path("GetMovementPerIcanAndDate/{iCan}/{date}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Beacon> getMovementPerIcanAndDate(@PathParam("iCan") String iCan, @PathParam("date") String date) {
         try {
-            Map<String, List<Beacon>> result = beaconService.getBeaconsByiCanAndDate(iCan, date);
-            return result.get("1");
+            List<Beacon> result = beaconService.getBeaconsByiCanAndDate(iCan, date);
+            return result;
         } catch (Exception ex) {
             return null;
         }
     }
     
-    @GET
-    @Path("GetMovementPerIcanPeriod/{iCan}/{dateFrom}/{dateTo}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Beacon> getMovementPerIcanPeriod(@PathParam("iCan") String iCan, @PathParam("dateFrom") String dateFrom, @PathParam("dateTo")String dateTo) {
-        try {
-            Map<String, List<Beacon>> result = beaconService.getBeaconsByPeriod(iCan, dateFrom, dateTo);
-            
-            return result.get("1");
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+//    @GET
+//    @Path("GetMovementPerIcanPeriod/{iCan}/{dateFrom}/{dateTo}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<Beacon> getMovementPerIcanPeriod(@PathParam("iCan") String iCan, @PathParam("dateFrom") String dateFrom, @PathParam("dateTo")String dateTo) {
+//        try {
+//            Map<String, List<Beacon>> result = beaconService.getBeaconsByPeriod(iCan, dateFrom, dateTo);
+//            
+//            return result.get("1");
+//        } catch (Exception ex) {
+//            return null;
+//        }
+//    }
 
+//    @GET
+//    @Path("GetCarMovementsADay/{iCan}")
+//    public List<Beacon> getCarMovementsADay(@PathParam("iCan") String iCan) {
+//        return beaconService.getBeaconsByDate(iCan);
+//    }
+    
     @GET
-    @Path("GetCarMovementsADay/{iCan}")
-    public List<Beacon> getCarMovementsADay(@PathParam("iCan") String iCan) {
-        return beaconService.getBeaconsByDate(iCan);
+    @Path("GetAllBeaconPerPeriod")
+    public List<Beacon> getAllBeaconPerPeriod(){
+        return beaconService.getAllBeaconPerPeriod();
     }
 
 }

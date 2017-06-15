@@ -87,17 +87,18 @@ public class BeaconDAO {
             Calendar c = Calendar.getInstance();   // this takes current date
             c.set(Calendar.DAY_OF_MONTH, 1);
             System.out.println(c.getTime());
-            Date dateFrom = df.parse(c.getTime().toString());
+            Date dateFrom = c.getTime();
+            String dateFromCorrectFormat = new SimpleDateFormat("yyyy-MM-dd").format(dateFrom); 
 
             //Get last day of the month
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date convertedDate = dateFormat.parse(dateFrom.toString());
-            Calendar c2 = Calendar.getInstance();
-            c2.setTime(convertedDate);
-            c2.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
-            Date dateTo = c2.getTime();
+            c.add(Calendar.MONTH, 1);  
+            c.set(Calendar.DAY_OF_MONTH, 1);  
+            c.add(Calendar.DATE, -1);  
+
+            Date dateTo = c.getTime(); 
+            String dateToCorrectFormat = new SimpleDateFormat("yyyy-MM-dd").format(dateTo); 
             
-            List<Beacon> result = getAllBeaconByPeriod(iCan, dateFrom.toString(), dateTo.toString());
+            List<Beacon> result = getAllBeaconByPeriod(iCan, dateFromCorrectFormat, dateToCorrectFormat);
             return result;
         } catch (Exception ex) {
             return null;
@@ -112,9 +113,37 @@ public class BeaconDAO {
             long timeFrom = datumVan.getTime();
             long timeTo = datumTot.getTime();
 
-//            System.out.println(timeFrom);
-//            System.out.println(timeTo);
             List<Beacon> result = em.createNamedQuery("Beacon.getByPeriod").setParameter("ican", iCan).setParameter("dateFrom", timeFrom).setParameter("dateTo", timeTo).getResultList();
+            return result;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+    
+    public List<Beacon> getBeaconByPeriod(){
+        try {
+            Calendar c = Calendar.getInstance();   // this takes current date
+            c.set(Calendar.DAY_OF_MONTH, 1);
+            System.out.println(c.getTime());
+            Date dateFrom = c.getTime();
+            String dateFromCorrectFormat = new SimpleDateFormat("yyyy-MM-dd").format(dateFrom); 
+
+            //Get last day of the month
+            c.add(Calendar.MONTH, 1);  
+            c.set(Calendar.DAY_OF_MONTH, 1);  
+            c.add(Calendar.DATE, -1);  
+
+            Date dateTo = c.getTime(); 
+            String dateToCorrectFormat = new SimpleDateFormat("yyyy-MM-dd").format(dateTo); 
+            
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date datumVan = dateFormat.parse(dateFromCorrectFormat);
+            Date datumTot = dateFormat.parse(dateToCorrectFormat);
+            long timeFrom = datumVan.getTime();
+            long timeTo = datumTot.getTime();
+            
+            List<Beacon> result = em.createNamedQuery("Beacon.getAllBeaconByPeriod").setParameter("dateFrom", timeFrom).setParameter("dateTo", timeTo).getResultList();
             return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
